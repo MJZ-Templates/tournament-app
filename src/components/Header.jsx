@@ -1,13 +1,14 @@
 // src/components/Header.jsx
 import React from "react";
-import { loadFromLocalStorage } from "../utils/storage";
 
-const Header = () => {
-  const tournamentTitle = loadFromLocalStorage("tournamentTitle");
-
+const Header = ({ tournamentTitle, pageTitle }) => {
   return (
     <header>
-      <h1>{tournamentTitle ? tournamentTitle : "Tournament App"}</h1>
+      <h1>
+        {tournamentTitle
+          ? `${tournamentTitle} - ${pageTitle}`
+          : "Tournament App"}
+      </h1>
     </header>
   );
 };

@@ -1,13 +1,16 @@
 // src/pages/ResultsPage.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { loadFromLocalStorage } from "../utils/storage";
 
-const ResultsPage = () => {
+const ResultsPage = ({ setPageTitle }) => {
+  useEffect(() => {
+    setPageTitle("Tournament Results");
+  }, [setPageTitle]);
+
   const results = loadFromLocalStorage("tournamentResults");
 
   return (
     <div>
-      <h1>Tournament Results</h1>
       {results ? (
         <div>
           {results.map((result, index) => (

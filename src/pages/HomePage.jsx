@@ -1,11 +1,15 @@
 // src/pages/HomePage.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { saveToLocalStorage } from "../utils/storage";
 
-const HomePage = ({ setTournamentTitle }) => {
-  const [title, setTitle] = useState("");
+const HomePage = ({ setTournamentTitle, setPageTitle }) => {
+  const [title, setLocalTitle] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setPageTitle("Home");
+  }, [setPageTitle]);
 
   const handleStart = () => {
     setTournamentTitle(title);
@@ -15,11 +19,10 @@ const HomePage = ({ setTournamentTitle }) => {
 
   return (
     <div>
-      <h1>Start Your Tournament</h1>
       <input
         type="text"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => setLocalTitle(e.target.value)}
         placeholder="Enter Tournament Title"
       />
       <button onClick={handleStart}>Start</button>

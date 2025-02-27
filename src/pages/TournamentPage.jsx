@@ -4,9 +4,13 @@ import { useNavigate } from "react-router-dom";
 import Match from "../components/Match";
 import { loadFromLocalStorage, saveToLocalStorage } from "../utils/storage";
 
-const TournamentPage = () => {
+const TournamentPage = ({ setPageTitle }) => {
   const [matches, setMatches] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setPageTitle("Tournament");
+  }, [setPageTitle]);
 
   useEffect(() => {
     const images = loadFromLocalStorage("tournamentImages");
@@ -40,7 +44,6 @@ const TournamentPage = () => {
 
   return (
     <div>
-      <h1>Tournament</h1>
       <div>
         {matches.map((match) => (
           <Match

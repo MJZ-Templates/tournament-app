@@ -9,19 +9,34 @@ import Header from "./components/Header";
 
 const App = () => {
   const [tournamentTitle, setTournamentTitle] = useState("");
+  const [pageTitle, setPageTitle] = useState("");
 
   return (
     <Router>
       <div>
-        <Header tournamentTitle={tournamentTitle} />
+        <Header tournamentTitle={tournamentTitle} pageTitle={pageTitle} />
         <Routes>
           <Route
             path="/"
-            element={<HomePage setTournamentTitle={setTournamentTitle} />}
+            element={
+              <HomePage
+                setTournamentTitle={setTournamentTitle}
+                setPageTitle={setPageTitle}
+              />
+            }
           />
-          <Route path="/create-tournament" element={<CreateTournamentPage />} />
-          <Route path="/tournament" element={<TournamentPage />} />
-          <Route path="/results" element={<ResultsPage />} />
+          <Route
+            path="/create-tournament"
+            element={<CreateTournamentPage setPageTitle={setPageTitle} />}
+          />
+          <Route
+            path="/tournament"
+            element={<TournamentPage setPageTitle={setPageTitle} />}
+          />
+          <Route
+            path="/results"
+            element={<ResultsPage setPageTitle={setPageTitle} />}
+          />
         </Routes>
       </div>
     </Router>
