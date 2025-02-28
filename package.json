@@ -10,7 +10,8 @@
   "dependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-router-dom": "^6.29.0"
+    "react-router-dom": "^6.29.0",
+    "styled-components": "^6.1.15"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.0",
