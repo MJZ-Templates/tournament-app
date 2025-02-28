@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ImageUploader from "../components/ImageUploader";
 import { saveToLocalStorage } from "../utils/storage";
 import styled from "styled-components";
+import { IoClose } from "react-icons/io5";
 
 const Container = styled.div`
   display: flex;
@@ -35,7 +36,7 @@ const PreviewContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 20px;
-  max-width: 60%;
+  max-width: 80%;
 `;
 
 const ImageWrapper = styled.div`
@@ -57,16 +58,14 @@ const DeleteButton = styled.button`
   top: -5px;
   right: 0;
   background-color: transparent;
-  color: white;
   border: none;
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  font-size: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 6px;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 
   &:hover {
     background-color: transparent;
@@ -125,7 +124,7 @@ const CreateTournamentPage = () => {
           <ImageWrapper key={index}>
             <PreviewImage src={image} alt={`Preview ${index + 1}`} />
             <DeleteButton onClick={() => handleDeleteImage(image)}>
-              ❌
+              <IoClose size={20} color="lightgray" />
             </DeleteButton>
           </ImageWrapper>
         ))}
