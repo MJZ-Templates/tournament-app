@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loadFromLocalStorage } from "../utils/storage";
 import styled from "styled-components";
+import Confetti from "react-confetti"; // ✅ 컨페티 효과 추가
 
 const Container = styled.div`
   display: flex;
@@ -11,6 +12,7 @@ const Container = styled.div`
   min-height: 100dvh;
   width: 100vw;
   background-color: #f8f9fa;
+  position: relative;
 `;
 
 const Title = styled.h1`
@@ -28,6 +30,7 @@ const WinnerContainer = styled.div`
 const WinnerImage = styled.img`
   display: block;
   max-width: 80%;
+  border-radius: 10px;
 `;
 
 const RestartButton = styled.button`
@@ -48,12 +51,20 @@ const RestartButton = styled.button`
 
 const ResultsPage = ({ setPageTitle }) => {
   const [winner, setWinner] = useState(null);
+  const [showConfetti, setShowConfetti] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     setPageTitle("Tournament Results");
     const finalWinner = loadFromLocalStorage("tournamentWinner");
     setWinner(finalWinner);
+
+    // 🎉 컨페티 3초 후 서서히 사라지게 설정
+    const timer = setTimeout(() => {
+      setShowConfetti(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
   }, [setPageTitle]);
 
   const handleRestart = () => {
@@ -62,6 +73,15 @@ const ResultsPage = ({ setPageTitle }) => {
 
   return (
     <Container>
+      {showConfetti && (
+        <Confetti
+          width={window.innerWidth}
+          height={window.innerHeight}
+          numberOfPieces={500}
+          recycle={false}
+          gravity={0.5}
+        />
+      )}
       {winner ? (
         <WinnerContainer>
           <Title>🏆 Tournament Winner! 🏆</Title>
