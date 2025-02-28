@@ -30,6 +30,23 @@ const UploadSection = styled.div`
   background-color: white;
 `;
 
+const PreviewContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  max-width: 60%;
+`;
+
+const PreviewImage = styled.img`
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 5px;
+  border: 2px solid #ddd;
+`;
+
 const StartButton = styled.button`
   padding: 15px;
   font-size: 1.5rem;
@@ -65,6 +82,13 @@ const CreateTournamentPage = () => {
       <UploadSection>
         <ImageUploader onUpload={handleUpload} />
       </UploadSection>
+
+      <PreviewContainer>
+        {images.map((image, index) => (
+          <PreviewImage key={index} src={image} alt={`Preview ${index + 1}`} />
+        ))}
+      </PreviewContainer>
+
       <StartButton onClick={handleStartTournament} disabled={images.length < 2}>
         Start Tournament
       </StartButton>
