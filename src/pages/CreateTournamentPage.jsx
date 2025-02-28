@@ -26,18 +26,23 @@ const UploadSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 30px;
   border: 2px dashed #ccc;
   border-radius: 10px;
   background-color: ${(props) => (props.isDragging ? "#e3f2fd" : "white")};
   text-align: center;
   transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  gap: 16px;
 
   ${(props) =>
     props.isDragging &&
     `
     border-color: #007bff;
-  `}
+  `};
+`;
+
+const UploadSectionDescription = styled.div`
+  margin: 0;
 `;
 
 const PreviewContainer = styled.div`
@@ -166,7 +171,9 @@ const CreateTournamentPage = () => {
         onDragOver={(e) => e.preventDefault()}
         onDrop={processDroppedFiles}
       >
-        <p>Drag & Drop images anywhere on the page or use the upload button</p>
+        <UploadSectionDescription>
+          Drag & Drop images anywhere on the page or use the upload button
+        </UploadSectionDescription>
         <ImageUploader onUpload={handleUpload} />
       </UploadSection>
 

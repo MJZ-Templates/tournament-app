@@ -2,6 +2,17 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Match from "../components/Match";
 import { loadFromLocalStorage, saveToLocalStorage } from "../utils/storage";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+`;
 
 const TournamentPage = () => {
   const [remainingImages, setRemainingImages] = useState([]);
@@ -32,13 +43,13 @@ const TournamentPage = () => {
   if (!currentMatch) return <p>Loading...</p>;
 
   return (
-    <div>
+    <Container>
       <Match
         player1={currentMatch[0]}
         player2={currentMatch[1]}
         onSelectWinner={handleMatchResult}
       />
-    </div>
+    </Container>
   );
 };
 

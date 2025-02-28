@@ -10,7 +10,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 100dvh;
-  width: 100vw;
+  width: 100%;
   background-color: #f8f9fa;
   position: relative;
 `;

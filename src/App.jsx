@@ -1,5 +1,4 @@
-// src/App.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CreateTournamentPage from "./pages/CreateTournamentPage";
