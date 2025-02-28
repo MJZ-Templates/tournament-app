@@ -68,7 +68,12 @@ const CreateTournamentPage = () => {
   const navigate = useNavigate();
 
   const handleUpload = (uploadedImages) => {
-    setImages(uploadedImages);
+    setImages((prevImages) => {
+      const filteredImages = uploadedImages.filter(
+        (newImage) => !prevImages.some((prevImage) => prevImage === newImage)
+      );
+      return [...prevImages, ...filteredImages];
+    });
   };
 
   const handleStartTournament = () => {
