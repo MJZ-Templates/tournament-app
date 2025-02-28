@@ -29,7 +29,7 @@ const WinnerContainer = styled.div`
 
 const WinnerImage = styled.img`
   display: block;
-  max-width: 80%;
+  max-width: 60%;
   border-radius: 10px;
 `;
 
