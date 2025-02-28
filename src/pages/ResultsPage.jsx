@@ -1,28 +1,25 @@
-// src/pages/ResultsPage.jsx
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { loadFromLocalStorage } from "../utils/storage";
 
 const ResultsPage = ({ setPageTitle }) => {
+  const [winner, setWinner] = useState(null);
+
   useEffect(() => {
     setPageTitle("Tournament Results");
+    const finalWinner = loadFromLocalStorage("tournamentWinner");
+    setWinner(finalWinner);
   }, [setPageTitle]);
 
-  const results = loadFromLocalStorage("tournamentResults");
-
   return (
-    <div>
-      {results ? (
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      {winner ? (
         <div>
-          {results.map((result, index) => (
-            <div key={index}>
-              <h2>Winner of Match {result.id + 1}</h2>
-              <img
-                src={result.winner.image}
-                alt={`Winner of Match ${result.id + 1}`}
-              />
-              <p>{result.winner.name}</p>
-            </div>
-          ))}
+          <h1>🏆 Tournament Winner! 🏆</h1>
+          <img
+            src={winner}
+            alt="Tournament Winner"
+            style={{ maxWidth: "50%", borderRadius: "10px" }}
+          />
         </div>
       ) : (
         <p>No results to show.</p>
