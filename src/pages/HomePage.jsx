@@ -53,9 +53,16 @@ const HomePage = ({ setTournamentTitle, setPageTitle }) => {
   }, [setPageTitle]);
 
   const handleStart = () => {
+    if (title.trim() === "") return;
     setTournamentTitle(title);
     saveToLocalStorage("tournamentTitle", title);
     navigate("/create-tournament");
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleStart();
+    }
   };
 
   return (
@@ -64,6 +71,7 @@ const HomePage = ({ setTournamentTitle, setPageTitle }) => {
         type="text"
         value={title}
         onChange={(e) => setLocalTitle(e.target.value)}
+        onKeyPress={handleKeyPress}
         placeholder="Enter Tournament Title"
       />
       <StartButton onClick={handleStart}>Start</StartButton>
