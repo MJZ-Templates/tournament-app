@@ -18,9 +18,7 @@ const Header = ({ tournamentTitle, pageTitle }) => {
   return (
     <HeaderContainer>
       <Title onClick={() => navigate("/")}>
-        {tournamentTitle
-          ? `${tournamentTitle} - ${pageTitle}`
-          : "Tournament App"}
+        {tournamentTitle ? `${tournamentTitle}` : "Tournament App"}
       </Title>
     </HeaderContainer>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { saveToLocalStorage } from "../utils/storage";
 import styled from "styled-components";
@@ -52,13 +52,9 @@ const StartButton = styled.button`
   }
 `;
 
-const HomePage = ({ setTournamentTitle, setPageTitle }) => {
+const HomePage = ({ setTournamentTitle }) => {
   const [title, setLocalTitle] = useState("");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setPageTitle("Home");
-  }, [setPageTitle]);
 
   const handleStart = () => {
     if (title.trim() === "") return;
@@ -83,7 +79,9 @@ const HomePage = ({ setTournamentTitle, setPageTitle }) => {
         onKeyPress={handleKeyPress}
         placeholder="Enter Tournament Title"
       />
-      <StartButton onClick={handleStart}>Start</StartButton>
+      <StartButton onClick={handleStart} disabled={title.trim() === ""}>
+        Start
+      </StartButton>
     </Container>
   );
 };

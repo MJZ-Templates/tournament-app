@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Match from "../components/Match";
 import { loadFromLocalStorage, saveToLocalStorage } from "../utils/storage";
 
-const TournamentPage = ({ setPageTitle }) => {
+const TournamentPage = () => {
   const [remainingImages, setRemainingImages] = useState([]);
   const [currentMatch, setCurrentMatch] = useState(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setPageTitle("Tournament");
-  }, [setPageTitle]);
 
   useEffect(() => {
     const images = loadFromLocalStorage("tournamentImages");
