@@ -12,6 +12,14 @@ const Container = styled.div`
   background-color: #f8f9fa;
 `;
 
+const Title = styled.h1`
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+`;
+
 const TitleInput = styled.input`
   width: 60%;
   padding: 15px;
@@ -67,6 +75,7 @@ const HomePage = ({ setTournamentTitle, setPageTitle }) => {
 
   return (
     <Container>
+      <Title>🏆 Let the Tournament Begin! 🏆</Title>
       <TitleInput
         type="text"
         value={title}

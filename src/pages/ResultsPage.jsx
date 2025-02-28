@@ -67,7 +67,7 @@ const ResultsPage = ({ setPageTitle }) => {
           <Title>🏆 Tournament Winner! 🏆</Title>
           <WinnerImage src={winner} alt="Tournament Winner" />
           <RestartButton onClick={handleRestart}>
-            새 토너먼트 시작
+            Start New Tournament
           </RestartButton>
         </WinnerContainer>
       ) : (
