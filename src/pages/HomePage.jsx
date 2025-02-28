@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { saveToLocalStorage } from "../utils/storage";
 import styled from "styled-components";
@@ -40,31 +40,36 @@ const StartButton = styled.button`
   width: 200px;
   padding: 15px;
   font-size: 1.5rem;
-  background-color: #007bff;
+  background-color: ${(props) => (props.disabled ? "#ccc" : "#007bff")};
   color: white;
   border: none;
   border-radius: 10px;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   transition: background-color 0.3s ease-in-out;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: ${(props) => (props.disabled ? "#ccc" : "#0056b3")};
   }
 `;
 
 const HomePage = ({ setTournamentTitle }) => {
   const [title, setLocalTitle] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    setIsDisabled(title.trim().length === 0);
+  }, [title]);
+
   const handleStart = () => {
-    if (title.trim() === "") return;
+    if (isDisabled) return;
     setTournamentTitle(title);
     saveToLocalStorage("tournamentTitle", title);
     navigate("/create-tournament");
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && !isDisabled) {
       handleStart();
     }
   };
@@ -79,7 +84,7 @@ const HomePage = ({ setTournamentTitle }) => {
         onKeyPress={handleKeyPress}
         placeholder="Enter Tournament Title"
       />
-      <StartButton onClick={handleStart} disabled={title.trim() === ""}>
+      <StartButton onClick={handleStart} disabled={isDisabled}>
         Start
       </StartButton>
     </Container>
