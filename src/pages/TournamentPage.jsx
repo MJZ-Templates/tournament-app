@@ -15,7 +15,7 @@ const TournamentPage = ({ setPageTitle }) => {
   useEffect(() => {
     const images = loadFromLocalStorage("tournamentImages");
     if (images) {
-      const shuffledImages = [...images].sort(() => Math.random() - 0.5); // 랜덤 섞기
+      const shuffledImages = [...images].sort(() => Math.random() - 0.5);
       setRemainingImages(shuffledImages);
     }
   }, []);
@@ -30,7 +30,7 @@ const TournamentPage = ({ setPageTitle }) => {
   }, [remainingImages, navigate]);
 
   const handleMatchResult = (winner) => {
-    setRemainingImages((prev) => [...prev.slice(2), winner]); // 다음 라운드 준비
+    setRemainingImages((prev) => [...prev.slice(2), winner]);
   };
 
   if (!currentMatch) return <p>Loading...</p>;

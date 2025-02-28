@@ -1,5 +1,27 @@
 import { useEffect, useState } from "react";
 import { loadFromLocalStorage } from "../utils/storage";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+`;
+
+const Title = styled.h1`
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+`;
+
+const WinnerImage = styled.img`
+  display: block;
+  max-width: 80%;
+  margin: auto;
+`;
 
 const ResultsPage = ({ setPageTitle }) => {
   const [winner, setWinner] = useState(null);
@@ -11,20 +33,16 @@ const ResultsPage = ({ setPageTitle }) => {
   }, [setPageTitle]);
 
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
+    <Container>
       {winner ? (
         <div>
-          <h1>🏆 Tournament Winner! 🏆</h1>
-          <img
-            src={winner}
-            alt="Tournament Winner"
-            style={{ maxWidth: "50%", borderRadius: "10px" }}
-          />
+          <Title>🏆 Tournament Winner! 🏆</Title>
+          <WinnerImage src={winner} alt="Tournament Winner" />
         </div>
       ) : (
         <p>No results to show.</p>
       )}
-    </div>
+    </Container>
   );
 };
 
