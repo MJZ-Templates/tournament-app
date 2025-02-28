@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ImageUploader from "../components/ImageUploader";
 import { saveToLocalStorage } from "../utils/storage";
@@ -11,7 +11,8 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f8f9fa;
+  background-color: ${(props) => (props.isDragging ? "#e3f2fd" : "#f8f9fa")};
+  transition: background-color 0.3s ease-in-out;
 `;
 
 const Title = styled.h1`
@@ -28,7 +29,15 @@ const UploadSection = styled.div`
   padding: 20px;
   border: 2px dashed #ccc;
   border-radius: 10px;
-  background-color: white;
+  background-color: ${(props) => (props.isDragging ? "#e3f2fd" : "white")};
+  text-align: center;
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+  ${(props) =>
+    props.isDragging &&
+    `
+    border-color: #007bff;
+  `}
 `;
 
 const PreviewContainer = styled.div`
@@ -59,7 +68,6 @@ const DeleteButton = styled.button`
   right: 0;
   background-color: transparent;
   border: none;
-  border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -68,7 +76,7 @@ const DeleteButton = styled.button`
   transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 
   &:hover {
-    background-color: transparent;
+    transform: scale(1.2);
   }
 `;
 
@@ -90,15 +98,14 @@ const StartButton = styled.button`
 
 const CreateTournamentPage = () => {
   const [images, setImages] = useState([]);
+  const [isDragging, setIsDragging] = useState(false);
   const navigate = useNavigate();
 
   const handleUpload = (uploadedImages) => {
-    setImages((prevImages) => {
-      const filteredImages = uploadedImages.filter(
-        (newImage) => !prevImages.some((prevImage) => prevImage === newImage)
-      );
-      return [...prevImages, ...filteredImages];
-    });
+    setImages((prevImages) => [
+      ...prevImages,
+      ...uploadedImages.filter((newImage) => !prevImages.includes(newImage)),
+    ]);
   };
 
   const handleDeleteImage = (imageToDelete) => {
@@ -112,10 +119,54 @@ const CreateTournamentPage = () => {
     navigate("/tournament");
   };
 
+  const processDroppedFiles = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+
+    const files = Array.from(e.dataTransfer.files);
+    const imageFiles = files
+      .filter((file) => file.type.startsWith("image/"))
+      .map((file) => URL.createObjectURL(file));
+
+    handleUpload(imageFiles);
+  };
+
+  useEffect(() => {
+    const handleDragOver = (e) => {
+      e.preventDefault();
+      setIsDragging(true);
+    };
+
+    const handleDragLeave = (e) => {
+      if (e.relatedTarget === null) {
+        setIsDragging(false);
+      }
+    };
+
+    const handleDrop = (e) => {
+      processDroppedFiles(e);
+    };
+
+    document.body.addEventListener("dragover", handleDragOver);
+    document.body.addEventListener("dragleave", handleDragLeave);
+    document.body.addEventListener("drop", handleDrop);
+
+    return () => {
+      document.body.removeEventListener("dragover", handleDragOver);
+      document.body.removeEventListener("dragleave", handleDragLeave);
+      document.body.removeEventListener("drop", handleDrop);
+    };
+  }, []);
+
   return (
-    <Container>
+    <Container isDragging={isDragging}>
       <Title>Upload Images for Tournament</Title>
-      <UploadSection>
+      <UploadSection
+        isDragging={isDragging}
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={processDroppedFiles}
+      >
+        <p>Drag & Drop images anywhere on the page or use the upload button</p>
         <ImageUploader onUpload={handleUpload} />
       </UploadSection>
 
