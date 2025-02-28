@@ -38,13 +38,39 @@ const PreviewContainer = styled.div`
   max-width: 60%;
 `;
 
+const ImageWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  margin: 5px;
+`;
+
 const PreviewImage = styled.img`
   width: 120px;
   height: 120px;
   object-fit: cover;
   border-radius: 10px;
-  margin: 5px;
   border: 2px solid #ddd;
+`;
+
+const DeleteButton = styled.button`
+  position: absolute;
+  top: -5px;
+  right: 0;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: transparent;
+  }
 `;
 
 const StartButton = styled.button`
@@ -76,6 +102,12 @@ const CreateTournamentPage = () => {
     });
   };
 
+  const handleDeleteImage = (imageToDelete) => {
+    setImages((prevImages) =>
+      prevImages.filter((image) => image !== imageToDelete)
+    );
+  };
+
   const handleStartTournament = () => {
     saveToLocalStorage("tournamentImages", images);
     navigate("/tournament");
@@ -90,7 +122,12 @@ const CreateTournamentPage = () => {
 
       <PreviewContainer>
         {images.map((image, index) => (
-          <PreviewImage key={index} src={image} alt={`Preview ${index + 1}`} />
+          <ImageWrapper key={index}>
+            <PreviewImage src={image} alt={`Preview ${index + 1}`} />
+            <DeleteButton onClick={() => handleDeleteImage(image)}>
+              ❌
+            </DeleteButton>
+          </ImageWrapper>
         ))}
       </PreviewContainer>
 
