@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { loadFromLocalStorage } from "../utils/storage";
 import styled from "styled-components";
 
@@ -7,7 +8,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100dvh;
+  width: 100vw;
   background-color: #f8f9fa;
 `;
 
@@ -17,14 +19,36 @@ const Title = styled.h1`
   color: #333;
 `;
 
+const WinnerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const WinnerImage = styled.img`
   display: block;
   max-width: 80%;
-  margin: auto;
+`;
+
+const RestartButton = styled.button`
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-top: 10px;
+
+  &:hover {
+    background-color: #0056b3;
+  }
 `;
 
 const ResultsPage = ({ setPageTitle }) => {
   const [winner, setWinner] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setPageTitle("Tournament Results");
@@ -32,13 +56,20 @@ const ResultsPage = ({ setPageTitle }) => {
     setWinner(finalWinner);
   }, [setPageTitle]);
 
+  const handleRestart = () => {
+    navigate("/");
+  };
+
   return (
     <Container>
       {winner ? (
-        <div>
+        <WinnerContainer>
           <Title>🏆 Tournament Winner! 🏆</Title>
           <WinnerImage src={winner} alt="Tournament Winner" />
-        </div>
+          <RestartButton onClick={handleRestart}>
+            새 토너먼트 시작
+          </RestartButton>
+        </WinnerContainer>
       ) : (
         <p>No results to show.</p>
       )}
