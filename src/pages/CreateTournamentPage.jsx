@@ -1,16 +1,11 @@
-// src/pages/CreateTournamentPage.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ImageUploader from "../components/ImageUploader";
 import { saveToLocalStorage } from "../utils/storage";
 
-const CreateTournamentPage = ({ setPageTitle }) => {
+const CreateTournamentPage = () => {
   const [images, setImages] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setPageTitle("Upload Images for Tournament");
-  }, [setPageTitle]);
 
   const handleUpload = (uploadedImages) => {
     setImages(uploadedImages);
@@ -23,10 +18,11 @@ const CreateTournamentPage = ({ setPageTitle }) => {
 
   return (
     <div>
+      <h1>Upload Images for Tournament</h1>
       <ImageUploader onUpload={handleUpload} />
-      {images.length > 0 && (
-        <button onClick={handleStartTournament}>Start Tournament</button>
-      )}
+      <button onClick={handleStartTournament} disabled={images.length < 2}>
+        Start Tournament
+      </button>
     </div>
   );
 };

@@ -1,22 +1,15 @@
-// src/components/Match.jsx
 import React from "react";
 
-const Match = ({ match, onSelectWinner }) => {
+const Match = ({ player1, player2, onSelectWinner }) => {
   return (
     <div className="match">
       <div className="player">
-        <img src={match.player1.image} alt={match.player1.name} />
-        <p>{match.player1.name}</p>
-        <button onClick={() => onSelectWinner(match.player1)}>
-          Select Player 1
-        </button>
+        <img src={player1} alt="Player 1" />
+        <button onClick={() => onSelectWinner(player1)}>Select</button>
       </div>
       <div className="player">
-        <img src={match.player2.image} alt={match.player2.name} />
-        <p>{match.player2.name}</p>
-        <button onClick={() => onSelectWinner(match.player2)}>
-          Select Player 2
-        </button>
+        <img src={player2} alt="Player 2" />
+        <button onClick={() => onSelectWinner(player2)}>Select</button>
       </div>
     </div>
   );
