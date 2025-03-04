@@ -4,7 +4,7 @@ const UploadContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: auto;
   background-color: #fff;
   text-align: center;
   cursor: pointer;
@@ -15,7 +15,11 @@ const UploadContainer = styled.div`
   }
 `;
 
-const HiddenInput = styled.input`
+const HiddenInput = styled.div`
+  display: none;
+`;
+
+const HiddenInputButton = styled.input`
   display: none;
 `;
 
@@ -40,12 +44,14 @@ const ImageUploader = ({ onUpload }) => {
   return (
     <UploadContainer>
       <Label htmlFor="file-upload">Click to Upload Images</Label>
-      <HiddenInput
-        id="file-upload"
-        type="file"
-        multiple
-        onChange={handleImageUpload}
-      />
+      <HiddenInput>
+        <HiddenInputButton
+          id="file-upload"
+          type="file"
+          multiple
+          onChange={handleImageUpload}
+        />
+      </HiddenInput>
     </UploadContainer>
   );
 };
