@@ -81,7 +81,7 @@ const DeleteButton = styled.button`
   transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 
   &:hover {
-    transform: scale(1.2);
+    background-color: transparent;
   }
 `;
 
@@ -182,7 +182,7 @@ const CreateTournamentPage = () => {
           <ImageWrapper key={index}>
             <PreviewImage src={image} alt={`Preview ${index + 1}`} />
             <DeleteButton onClick={() => handleDeleteImage(image)}>
-              <IoClose size={20} color="lightgray" />
+              <IoClose size={20} color="#333333" />
             </DeleteButton>
           </ImageWrapper>
         ))}

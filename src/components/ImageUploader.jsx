@@ -28,11 +28,6 @@ const Label = styled.label`
   border: 1px solid #007bff;
   background-color: white;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-
-  &:hover {
-    background-color: #007bff;
-    color: white;
-  }
 `;
 
 const ImageUploader = ({ onUpload }) => {
