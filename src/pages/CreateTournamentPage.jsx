@@ -41,8 +41,12 @@ const UploadSection = styled.div`
   `};
 `;
 
-const UploadSectionDescription = styled.div`
-  margin: 0;
+const UploadSectionDescription = styled.pre`
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.5;
 `;
 
 const PreviewContainer = styled.div`
@@ -107,6 +111,11 @@ const CreateTournamentPage = () => {
   const navigate = useNavigate();
 
   const handleUpload = (uploadedImages) => {
+    if (images.length + uploadedImages.length > 20) {
+      alert("You can only upload up to 20 images.");
+      return;
+    }
+
     setImages((prevImages) => [
       ...prevImages,
       ...uploadedImages.filter((newImage) => !prevImages.includes(newImage)),
@@ -172,7 +181,9 @@ const CreateTournamentPage = () => {
         onDrop={processDroppedFiles}
       >
         <UploadSectionDescription>
-          Drag & Drop images anywhere on the page or use the upload button
+          {`You can add between 2 and 20 images for the tournament.
+          Supported formats are JPEG, PNG, GIF, BMP, and WEBP.
+          \nDrag & Drop images anywhere on the page or use the upload button.`}
         </UploadSectionDescription>
         <ImageUploader onUpload={handleUpload} />
       </UploadSection>
