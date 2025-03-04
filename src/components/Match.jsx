@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import vsImage from "../assets/img-vs.png";
 
