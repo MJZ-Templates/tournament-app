@@ -47,6 +47,7 @@ const UploadSectionDescription = styled.pre`
   text-align: center;
   margin-bottom: 20px;
   line-height: 1.5;
+  white-space: pre-wrap;
 `;
 
 const PreviewContainer = styled.div`
