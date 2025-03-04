@@ -10,10 +10,16 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100dvh;
-  overflow-y: hidden
+  height: 100vh;
+  overflow-y: hidden;
   background-color: #f8f9fa;
-  position: relative;
+`;
+
+const WinnerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Title = styled.h1`
@@ -23,15 +29,10 @@ const Title = styled.h1`
   color: #333;
 `;
 
-const WinnerContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 const WinnerImage = styled.img`
   display: block;
-  max-width: 80%;
+  max-width: 70%;
+  max-height: 70%;
   border-radius: 10px;
 `;
 
