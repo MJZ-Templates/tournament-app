@@ -112,8 +112,8 @@ const CreateTournamentPage = () => {
   const navigate = useNavigate();
 
   const handleUpload = (uploadedImages) => {
-    if (images.length + uploadedImages.length > 20) {
-      alert("You can only upload up to 20 images.");
+    if (images.length + uploadedImages.length > 16) {
+      alert("You can only upload up to 16 images.");
       return;
     }
 
@@ -171,14 +171,14 @@ const CreateTournamentPage = () => {
       document.body.removeEventListener("dragleave", handleDragLeave);
       document.body.removeEventListener("drop", handleDrop);
     };
-  }, []);
+  }, [images]);
 
   return (
     <Container isDragging={isDragging}>
       <Title>Upload Images for Tournament</Title>
       <UploadSection isDragging={isDragging}>
         <UploadSectionDescription>
-          You can add between 2 and 20 images for the tournament. <br />
+          You can add between 2 and 16 images for the tournament. <br />
           Supported formats are JPEG, PNG, GIF, BMP, and WEBP.
           <br />
           <br />
