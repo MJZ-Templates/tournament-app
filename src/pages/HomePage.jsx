@@ -9,7 +9,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  width: 100%;
   background-color: #f8f9fa;
   padding: 20px;
 `;
@@ -28,6 +27,7 @@ const Description = styled.pre`
   text-align: center;
   margin-bottom: 40px;
   line-height: 1.5;
+  white-space: pre-wrap;
 
   span {
     font-weight: bold;

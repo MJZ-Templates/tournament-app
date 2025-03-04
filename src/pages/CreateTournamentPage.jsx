@@ -182,9 +182,11 @@ const CreateTournamentPage = () => {
         onDrop={processDroppedFiles}
       >
         <UploadSectionDescription>
-          {`You can add between 2 and 20 images for the tournament.
+          You can add between 2 and 20 images for the tournament. <br />
           Supported formats are JPEG, PNG, GIF, BMP, and WEBP.
-          \nDrag & Drop images anywhere on the page or use the upload button.`}
+          <br />
+          <br />
+          Drag & Drop images anywhere on the page or use the upload button.
         </UploadSectionDescription>
         <ImageUploader onUpload={handleUpload} isDragging={isDragging} />
       </UploadSection>
