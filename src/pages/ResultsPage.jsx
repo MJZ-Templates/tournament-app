@@ -9,15 +9,17 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100dvh;
   width: 100%;
+  height: 100dvh;
+  overflow-y: hidden
   background-color: #f8f9fa;
   position: relative;
 `;
 
 const Title = styled.h1`
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin: 0;
+  padding: 30px 0;
   color: #333;
 `;
 
@@ -29,7 +31,7 @@ const WinnerContainer = styled.div`
 
 const WinnerImage = styled.img`
   display: block;
-  max-width: 60%;
+  max-width: 80%;
   border-radius: 10px;
 `;
 
@@ -42,7 +44,7 @@ const RestartButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  margin-top: 10px;
+  margin: 30px 0;
 
   &:hover {
     background-color: #0056b3;

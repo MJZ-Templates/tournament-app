@@ -10,7 +10,8 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: hidden;
   background-color: #f8f9fa;
 `;
 
