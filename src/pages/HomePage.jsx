@@ -62,6 +62,10 @@ const HomePage = ({ setTournamentTitle }) => {
     setIsDisabled(title.trim().length === 0);
   }, [title]);
 
+  useEffect(() => {
+    setTournamentTitle("");
+  }, [setTournamentTitle]);
+
   const handleStart = () => {
     if (isDisabled) return;
     setTournamentTitle(title);

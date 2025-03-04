@@ -12,13 +12,13 @@ const Title = styled.h1`
   transition: color 0.3s ease-in-out;
 `;
 
-const Header = ({ tournamentTitle, pageTitle }) => {
+const Header = ({ tournamentTitle }) => {
   const navigate = useNavigate();
 
   return (
     <HeaderContainer>
       <Title onClick={() => navigate("/")}>
-        {tournamentTitle ? `${tournamentTitle}` : "Tournament App"}
+        {tournamentTitle || "Tournament App"}
       </Title>
     </HeaderContainer>
   );
