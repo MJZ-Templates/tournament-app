@@ -11,6 +11,7 @@ const Container = styled.div`
   height: 100vh;
   width: 100%;
   background-color: #f8f9fa;
+  padding: 20px;
 `;
 
 const Title = styled.h1`
@@ -19,6 +20,26 @@ const Title = styled.h1`
   margin-bottom: 20px;
   color: #333;
   text-align: center;
+`;
+
+const Description = styled.pre`
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40px;
+  line-height: 1.5;
+
+  span {
+    font-weight: bold;
+    color: #333;
+  }
+`;
+
+const Image = styled.img`
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 20px;
 `;
 
 const TitleInput = styled.input`
@@ -82,6 +103,11 @@ const HomePage = ({ setTournamentTitle }) => {
   return (
     <Container>
       <Title>🏆 Let the Tournament Begin! 🏆</Title>
+      <Description>
+        Create your own tournament by selecting your favorite images in a{" "}
+        <span>1:1 random match</span> style. <br />
+        Get ready to have fun and choose the best!
+      </Description>
       <TitleInput
         type="text"
         value={title}
