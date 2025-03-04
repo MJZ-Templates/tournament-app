@@ -9,10 +9,6 @@ const UploadContainer = styled.div`
   text-align: center;
   cursor: pointer;
   transition: border-color 0.3s ease-in-out;
-
-  &:hover {
-    border-color: #007bff;
-  }
 `;
 
 const HiddenInput = styled.div`
@@ -30,11 +26,11 @@ const Label = styled.label`
   padding: 10px 20px;
   border-radius: 5px;
   border: 1px solid #007bff;
-  background-color: white;
+  background-color: ${(props) => (props.isDragging ? "#e3f2fd" : "white")};
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 `;
 
-const ImageUploader = ({ onUpload }) => {
+const ImageUploader = ({ onUpload, isDragging }) => {
   const handleImageUpload = (event) => {
     const files = Array.from(event.target.files);
     const images = files.map((file) => URL.createObjectURL(file));
@@ -43,7 +39,9 @@ const ImageUploader = ({ onUpload }) => {
 
   return (
     <UploadContainer>
-      <Label htmlFor="file-upload">Click to Upload Images</Label>
+      <Label isDragging={isDragging} htmlFor="file-upload">
+        Click to Upload Images
+      </Label>
       <HiddenInput>
         <HiddenInputButton
           id="file-upload"

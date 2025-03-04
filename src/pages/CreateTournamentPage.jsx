@@ -185,7 +185,7 @@ const CreateTournamentPage = () => {
           Supported formats are JPEG, PNG, GIF, BMP, and WEBP.
           \nDrag & Drop images anywhere on the page or use the upload button.`}
         </UploadSectionDescription>
-        <ImageUploader onUpload={handleUpload} />
+        <ImageUploader onUpload={handleUpload} isDragging={isDragging} />
       </UploadSection>
 
       <PreviewContainer>
