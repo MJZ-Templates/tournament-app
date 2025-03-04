@@ -9,10 +9,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
   height: 100vh;
   overflow-y: hidden;
   background-color: #f8f9fa;
+  margin: auto 0;
 `;
 
 const TournamentPage = () => {

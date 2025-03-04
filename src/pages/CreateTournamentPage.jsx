@@ -10,9 +10,9 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   background-color: ${(props) => (props.isDragging ? "#e3f2fd" : "#f8f9fa")};
   transition: background-color 0.3s ease-in-out;
+  margin: auto 0;
 `;
 
 const Title = styled.h1`

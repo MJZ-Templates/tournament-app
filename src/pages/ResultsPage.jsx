@@ -13,6 +13,7 @@ const Container = styled.div`
   height: 100vh;
   overflow-y: hidden;
   background-color: #f8f9fa;
+  margin: auto 0;
 `;
 
 const WinnerContainer = styled.div`
