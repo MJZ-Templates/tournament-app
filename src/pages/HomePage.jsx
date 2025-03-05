@@ -22,7 +22,7 @@ const Title = styled.h1`
 `;
 
 const Description = styled.pre`
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #666;
   text-align: center;
   margin-bottom: 40px;

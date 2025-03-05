@@ -44,7 +44,7 @@ const UploadSection = styled.div`
 `;
 
 const UploadSectionDescription = styled.pre`
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #666;
   text-align: center;
   margin-bottom: 20px;
