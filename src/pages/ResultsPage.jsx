@@ -86,7 +86,7 @@ const ResultsPage = () => {
       )}
       {winner ? (
         <WinnerContainer>
-          <Title>🏆 Tournament Winner! 🏆</Title>
+          <Title>🏆 Winner! 🏆</Title>
           <WinnerImage src={winner} alt="Tournament Winner" />
           <RestartButton onClick={handleRestart}>
             Start New Tournament
