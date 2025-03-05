@@ -12,7 +12,9 @@ const Container = styled.div`
   justify-content: center;
   background-color: ${(props) => (props.isDragging ? "#e3f2fd" : "#f8f9fa")};
   transition: background-color 0.3s ease-in-out;
+  height: 100vh;
   margin: auto 0;
+  padding: 30px 0;
 `;
 
 const Title = styled.h1`
