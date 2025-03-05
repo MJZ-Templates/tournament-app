@@ -117,10 +117,7 @@ const CreateTournamentPage = () => {
       return;
     }
 
-    setImages((prevImages) => [
-      ...prevImages,
-      ...uploadedImages.filter((newImage) => !prevImages.includes(newImage)),
-    ]);
+    setImages((prevImages) => [...prevImages, ...uploadedImages]);
   };
 
   const handleDeleteImage = (imageToDelete) => {
