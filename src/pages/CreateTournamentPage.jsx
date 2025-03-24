@@ -4,6 +4,7 @@ import ImageUploader from "../components/ImageUploader";
 import { saveToLocalStorage } from "../utils/storage";
 import styled from "styled-components";
 import { IoClose } from "react-icons/io5";
+import Button from "../components/Button";
 
 const Container = styled.div`
   display: flex;
@@ -12,14 +13,14 @@ const Container = styled.div`
   justify-content: center;
   background-color: ${(props) => (props.isDragging ? "#e3f2fd" : "#f8f9fa")};
   transition: background-color 0.3s ease-in-out;
-  height: 100vh;
   margin: auto 0;
-  padding: 30px 0;
+  padding: 30px 10px;
+  gap: 40px;
 `;
 
 const Title = styled.h1`
-  font-size: 2rem;
-  margin-bottom: 20px;
+  text-align: center;
+  font-size: 32px;
   color: #333;
 `;
 
@@ -44,10 +45,9 @@ const UploadSection = styled.div`
 `;
 
 const UploadSectionDescription = styled.pre`
-  font-size: 1rem;
+  font-size: 16px;
   color: #666;
   text-align: center;
-  margin-bottom: 20px;
   line-height: 1.5;
   white-space: pre-wrap;
 `;
@@ -56,7 +56,6 @@ const PreviewContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 20px;
   max-width: 80%;
 `;
 
@@ -89,22 +88,6 @@ const DeleteButton = styled.button`
 
   &:hover {
     background-color: transparent;
-  }
-`;
-
-const StartButton = styled.button`
-  padding: 15px;
-  font-size: 1.5rem;
-  background-color: ${(props) => (props.disabled ? "#ccc" : "#007bff")};
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
-  transition: background-color 0.3s ease-in-out;
-  margin-top: 20px;
-
-  &:hover {
-    background-color: ${(props) => (props.disabled ? "#ccc" : "#0056b3")};
   }
 `;
 
@@ -185,21 +168,22 @@ const CreateTournamentPage = () => {
         </UploadSectionDescription>
         <ImageUploader onUpload={handleUpload} isDragging={isDragging} />
       </UploadSection>
+      {images.length > 0 && (
+        <PreviewContainer>
+          {images.map((image, index) => (
+            <ImageWrapper key={index}>
+              <PreviewImage src={image} alt={`Preview ${index + 1}`} />
+              <DeleteButton onClick={() => handleDeleteImage(image)}>
+                <IoClose size={20} color="#333333" />
+              </DeleteButton>
+            </ImageWrapper>
+          ))}
+        </PreviewContainer>
+      )}
 
-      <PreviewContainer>
-        {images.map((image, index) => (
-          <ImageWrapper key={index}>
-            <PreviewImage src={image} alt={`Preview ${index + 1}`} />
-            <DeleteButton onClick={() => handleDeleteImage(image)}>
-              <IoClose size={20} color="#333333" />
-            </DeleteButton>
-          </ImageWrapper>
-        ))}
-      </PreviewContainer>
-
-      <StartButton onClick={handleStartTournament} disabled={images.length < 2}>
+      <Button onClick={handleStartTournament} disabled={images.length < 2}>
         Start Tournament
-      </StartButton>
+      </Button>
     </Container>
   );
 };

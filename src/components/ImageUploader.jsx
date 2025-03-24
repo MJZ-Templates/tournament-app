@@ -20,7 +20,7 @@ const HiddenInputButton = styled.input`
 `;
 
 const Label = styled.label`
-  font-size: 1rem;
+  font-size: 16px;
   color: #007bff;
   cursor: pointer;
   padding: 10px 20px;

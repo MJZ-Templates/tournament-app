@@ -5,9 +5,9 @@ body {
 }
 
 header {
-  background-color: #333;
+  background-color: #5094fa;
   color: #fff;
-  padding: 1rem;
+  padding: 16px;
 }
 
 header h1 {
@@ -33,7 +33,7 @@ header nav ul li a {
 .match {
   display: flex;
   justify-content: space-around;
-  margin: 1rem 0;
+  margin: 16px 0;
 }
 
 .player {
@@ -45,16 +45,13 @@ header nav ul li a {
   border-radius: 50%;
 }
 
-button {
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
+h1,
+pre {
+  margin: 0;
+  padding: 0;
 }
 
-button:hover {
-  background-color: #0056b3;
+button {
+  border: none;
+  cursor: pointer;
 }

@@ -3,17 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { loadFromLocalStorage } from "../utils/storage";
 import styled from "styled-components";
 import Confetti from "react-confetti";
+import Button from "../components/Button";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100vh;
-  overflow-y: hidden;
   background-color: #f8f9fa;
   margin: auto 0;
+  padding: 30px 10px;
+  gap: 20px;
 `;
 
 const WinnerContainer = styled.div`
@@ -21,36 +21,22 @@ const WinnerContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 40px;
+  height: 100%;
 `;
 
 const Title = styled.h1`
-  font-size: 2rem;
+  font-size: 32px;
   margin: 0;
-  padding: 30px 0;
   color: #333;
 `;
 
 const WinnerImage = styled.img`
   display: block;
-  max-width: 70%;
-  max-height: 70%;
+  width: auto;
+  height: 50vh;
   border-radius: 10px;
-`;
-
-const RestartButton = styled.button`
-  padding: 15px 30px;
-  font-size: 1.5rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  margin: 30px 0;
-
-  &:hover {
-    background-color: #0056b3;
-  }
+  object-fit: contain;
 `;
 
 const ResultsPage = () => {
@@ -88,9 +74,7 @@ const ResultsPage = () => {
         <WinnerContainer>
           <Title>🏆 Winner! 🏆</Title>
           <WinnerImage src={winner} alt="Tournament Winner" />
-          <RestartButton onClick={handleRestart}>
-            Start New Tournament
-          </RestartButton>
+          <Button onClick={handleRestart}>Start New Tournament</Button>
         </WinnerContainer>
       ) : (
         <p>No results to show.</p>

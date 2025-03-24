@@ -3,9 +3,11 @@ import vsImage from "../assets/img-vs.png";
 
 const MatchContainer = styled.div`
   display: flex;
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   height: 100vh;
   position: relative;
+  overflow: hidden;
 `;
 
 const Player = styled.div`
@@ -16,6 +18,7 @@ const Player = styled.div`
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
   position: relative;
+  overflow: hidden;
 
   &:hover {
     transform: scale(1.05);
@@ -23,8 +26,10 @@ const Player = styled.div`
 `;
 
 const PlayerImage = styled.img`
-  max-width: 90%;
-  max-height: 90%;
+  min-width: 50%;
+  min-height: 50%;
+  max-width: 80%;
+  max-height: 80%;
   object-fit: contain;
 `;
 
