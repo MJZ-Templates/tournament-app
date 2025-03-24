@@ -33,7 +33,6 @@
 ```
 .
 ├── node_modules
-├── public
 ├── src
 │   ├── assets
 │   │   └── images
