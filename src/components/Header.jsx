@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 const HeaderContainer = styled.header`
   padding: 0;
+  background-color: #5094fa;
+  color: #fff;
 `;
 
 const Title = styled.h1`

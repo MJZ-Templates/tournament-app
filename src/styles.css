@@ -4,47 +4,6 @@ body {
   padding: 0;
 }
 
-header {
-  background-color: #5094fa;
-  color: #fff;
-  padding: 16px;
-}
-
-header h1 {
-  margin: 0;
-}
-
-header nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: space-around;
-  padding: 0;
-}
-
-header nav ul li {
-  display: inline;
-}
-
-header nav ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.match {
-  display: flex;
-  justify-content: space-around;
-  margin: 16px 0;
-}
-
-.player {
-  text-align: center;
-}
-
-.player img {
-  max-width: 100px;
-  border-radius: 50%;
-}
-
 h1,
 pre {
   margin: 0;
